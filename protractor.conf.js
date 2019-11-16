@@ -20,6 +20,7 @@ exports.config = {
         // "--headless",
         // "--incognito",
         // "--start-maximized"
+        // "--window-size=1920,1080"
       ]
     }
   },
@@ -45,7 +46,7 @@ exports.config = {
     jasmine.getEnv().addReporter(new SpecReporter({
       // https://github.com/bcaudan/jasmine-spec-reporter/blob/master/src/configuration.ts
       spec: {
-        displayStacktrace: false
+        displayStacktrace: true
       }
     }));
 
