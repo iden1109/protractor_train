@@ -8,7 +8,7 @@ describe('App', () => {
     await browser.waitForAngularEnabled(true);
   });
 
-  it('should show title', async () => {
+  xit('should show title', async () => {
     await browser.get(url);
     const title = await browser.getTitle();
     expect(title).toContain('Protractor - end-to-end testing for AngularJS');

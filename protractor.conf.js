@@ -16,7 +16,7 @@ exports.config = {
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        // "--headless",
+        "--headless",
         // "--incognito",
         // "--start-maximized"
       ]
