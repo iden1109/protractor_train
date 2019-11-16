@@ -1,4 +1,0 @@
-describe('search a event', () => {
-
-});
-

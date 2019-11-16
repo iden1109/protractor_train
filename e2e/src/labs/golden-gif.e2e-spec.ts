@@ -1,3 +1,0 @@
-describe('gif page present', () => {
-
-});
