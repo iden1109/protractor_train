@@ -10,20 +10,21 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   allScriptsTimeout: 600000,
   specs: [
-    './src/**/*.e2e-spec.ts'
+    './src/**/*.e2e-spec.ts',
+    './e2e/**/*.spec.ts'
   ],
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
       args: [
-        "--headless",
+        // "--headless",
         // "--incognito",
         // "--start-maximized"
       ]
     }
   },
 
-  // SELENIUM_PROMISE_MANAGER: false,
+  SELENIUM_PROMISE_MANAGER: false,
 
   directConnect: true,
   //seleniumServerJar: '../node_modules/protractor/node_modules/webdriver-manager/selenium/selenium-server-standalone-3.141.59.jar',

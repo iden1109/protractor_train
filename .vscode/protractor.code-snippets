@@ -126,7 +126,7 @@
   "element-by": {
     "scope": "javascript,typescript",
     "prefix": "element-by",
-    "body": "element(by.${1|id,className,tagName,name,buttonText,partialButtonText,linkText,partialLinkText|}('$2'))"
+    "body": "element(by.${1|id,css,className,tagName,name,buttonText,partialButtonText,linkText,partialLinkText|}('$2'))"
   },
   "element-by-cssContainingText": {
     "scope": "javascript,typescript",

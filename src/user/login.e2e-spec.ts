@@ -17,10 +17,26 @@ describe('test user login', () => {
     });
 
     it('should login by John with right password', async () => {
-        element(by.id('userName')).sendKeys('John');
-        element(by.id('password')).sendKeys('123456');
-        await element(by.buttonText('登入')).click();
+        await element(by.id('userName')).sendKeys('John');
+        await element(by.id('password')).sendKeys('123456');
+        await getLoginBtn().click();
         const url = await browser.getCurrentUrl();
         expect(url).toContain('/events');
     });
+
+    it('should login fail by John with wrong password', async () => {
+        await browser.get('/');
+        await element(by.linkText('登入')).click();
+        await element(by.id('userName')).sendKeys('John');
+        await element(by.id('password')).sendKeys('abc');
+        await getLoginBtn().click();
+        const wrongMsg = element(by.className('alert-danger'));
+        const msg = await wrongMsg.getText();
+        expect(msg).toContain('錯誤的帳號密碼');
+    });
 });
+
+function getLoginBtn() {
+    return element(by.buttonText('登入'));
+}
+

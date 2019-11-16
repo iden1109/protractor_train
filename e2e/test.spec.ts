@@ -1,26 +1,19 @@
 import { browser, logging, $, $$, by, element, ExpectedConditions as EC } from 'protractor';
 
-describe('App', () => {
+describe('Vuejs', () => {
 
-  const url = 'http://www.protractortest.org';
+  const url = 'https://vuejs.org/';
 
   beforeEach(async () => {
-    await browser.waitForAngularEnabled(true);
+    await browser.waitForAngularEnabled(false);
   });
 
-  xit('should show title', async () => {
+  it('should show Server-Side Rendering when input SSR in the search form', async () => {
     await browser.get(url);
-    const title = await browser.getTitle();
-    expect(title).toContain('Protractor - end-to-end testing for AngularJS');
+    await element(by.id('search-query-nav')).sendKeys('SSR');
+    await browser.sleep(1000);
+    const serverSideRendering  = element(by.className('algolia-docsearch-suggestion--subcategory-column-text'));
+    expect(await serverSideRendering.getText()).toEqual('Server-Side Rendering');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    // const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    // expect(logs).not.toContain(
-    //   jasmine.objectContaining({
-    //     level: logging.Level.SEVERE
-    //   } as logging.Entry)
-    // );
-  });
 });
