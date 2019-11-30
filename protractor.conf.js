@@ -22,7 +22,9 @@ exports.config = {
         // "--start-maximized"
         // "--window-size=1920,1080"
       ]
-    }
+    },
+    // shardTestFiles: true,
+    // maxInstances: 5
   },
 
   SELENIUM_PROMISE_MANAGER: false,
