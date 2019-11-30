@@ -5,15 +5,16 @@
   "main": "protractor.conf.js",
   "scripts": {
     "postinstall": "webdriver-manager update",
-    "test": "protractor protractor.conf.js"
+    "test": "protractor protractor.conf.js",
+    "golden": "protractor e2e/protractor-goldens.conf.js"
   },
   "keywords": [],
   "author": "Will <doggy.huang@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^10.17.5",
     "@types/jasmine": "~2.8.16",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^10.17.5",
     "blue-harvest": "^0.3.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
@@ -22,5 +23,8 @@
     "ts-node": "^8.5.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "protractor-screenshot-utils": "^1.0.5"
   }
 }
