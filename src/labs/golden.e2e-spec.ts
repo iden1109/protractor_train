@@ -7,7 +7,7 @@ describe('main page present', () => {
         await browser.get('/');
         await browser.manage().window().setSize(1366, 1024);
         const golden = 'e2e/goldens/home.png';
-        const diffDir = 'e2e/goldens/'; // 會產生 diff-home.png
+        const diffDir = 'e2e/goldens/diff/'; // 會產生 diff-home.png
         await browser.waitForAngular(); // 截圖前一定要 wait
         const actual = await browser.takeScreenshot();
         try {
