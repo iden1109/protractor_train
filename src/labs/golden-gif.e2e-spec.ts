@@ -1,7 +1,7 @@
 import { browser, by, element, $, $$, ExpectedConditions as EC } from 'protractor';
 import { compareScreenshot, addMask } from 'blue-harvest';
 
-fdescribe('gif page present', () => {
+describe('gif page present', () => {
 
     it('should compare gif lab page', async () => {
         await browser.get('/labs/gif');
