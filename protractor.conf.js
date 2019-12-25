@@ -22,7 +22,9 @@ exports.config = {
         // "--start-maximized"
         // "--window-size=1920,1080"
       ]
-    }
+    },
+    // shardTestFiles: true,
+    // maxInstances: 5
   },
 
   SELENIUM_PROMISE_MANAGER: false,
@@ -39,6 +41,12 @@ exports.config = {
   },
 
   async onPrepare() {
+    /**
+     * @type { import("protractor").ProtractorBrowser }
+     */
+    const browser = global['browser'];
+    
+    // browser.manage().timeouts().implicitlyWait(2000);
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });
@@ -49,6 +57,25 @@ exports.config = {
         displayStacktrace: true
       }
     }));
+
+    jasmine.getEnv().addReporter({
+      specDone: async (result) => {
+        if (result.failedExpectations.length >0) {
+          let png = await browser.takeScreenshot(); 
+          var stream = require('fs').createWriteStream(
+          "./failuretests/failureScreenshot.png"); 
+          stream.write(new Buffer(png, 'base64')); 
+          stream.end();
+        } 
+      }
+    });
+
+    const HtmlReporter = require('protractor-beautiful-reporter');
+    jasmine.getEnv().addReporter(new HtmlReporter( { 
+      baseDirectory: 'tmp/screenshots', 
+      takeScreenShotsOnlyForFailedSpecs: false, 
+      preserveDirectory: false
+    }).getJasmine2Reporter());
 
     /**
      * @type { import("protractor").ProtractorBrowser }
